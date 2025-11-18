@@ -82,7 +82,7 @@ def process_tabs():
                 - 11 - столбцов
             """
         )
-        st.write(df.info(verbose=True, show_counts=True))
+        # st.write(df.info(verbose=True, show_counts=True))
         st.write(
             """
                  **Вывод:**
