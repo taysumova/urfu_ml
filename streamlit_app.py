@@ -107,7 +107,7 @@ def process_tabs():
             "Response",
         ]  # категориальные-бинарные
 
-        # @TODO - make automated count not like tha hardcoded
+        # @TODO - make automated count not like that hardcoded
         st.write(
             """
                 - 3 числовых
