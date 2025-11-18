@@ -1,10 +1,20 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-df = pd.DataFrame({
-    'sales': [100, 150, 200, 250],
-    'month': ['Jan', 'Feb', 'Mar', 'Apr']
-})
+data_file_path = "https://media.githubusercontent.com/media/taysumova/urfu_ml/refs/heads/main/data_sources/train.csv"
+
+
+@st.cache_data(ttl=3600)  # Cache for 1 hour
+def load_large_dataset():
+    df = pd.read_csv(
+        data_file_path,
+        index_col="id",
+    )
+    return df
 
 
 def process_main_page():
@@ -16,7 +26,7 @@ def show_main_page():
     st.set_page_config(
         layout="wide",
         initial_sidebar_state="auto",
-        page_title="Бинарная классификация перекрёстных продаж страхования"
+        page_title="Бинарная классификация перекрёстных продаж страхования",
     )
 
     st.write(
@@ -28,24 +38,89 @@ def show_main_page():
 
 def process_tabs():
     tab1, tab2, tab3, tab4 = st.tabs(["О команде", "EDA", "Model", "Итоги"])
-    members = ['Мартынов Дмитрий', 'Осипов Роман', 'Иванков Дмитрий', 'Плахотин Андрей', 'Максим Макаров', 'Тайсумова Луиза']
+    members = [
+        "Мартынов Дмитрий",
+        "Осипов Роман",
+        "Иванков Дмитрий",
+        "Плахотин Андрей",
+        "Максим Макаров",
+        "Тайсумова Луиза",
+    ]
 
     with tab1:
-        st.header("Команда \"Страховщики\"")
-
+        st.header('Команда "Страховщики"')
         for i in members:
             st.markdown("- " + i)
 
     with tab2:
-        st.header("Tab 2")
-        st.write("This is the content of tab 2")
-        st.header("Raw Data")
+        pd.set_option("display.float_format", lambda x: f"{x:,.2f}")
+        st.header("1. Общая информация о данных")
+        st.write(
+            """
+            * id - порядковый номер
+            * Gender - пол
+            * Age - возраст
+            * Driving_License - наличие ВУ
+            * Region_Code - код региона
+            * Previously_Insured - застраховано ли ранее ТС
+            * Vehicle_Age - возраст ТС
+            * Vehicle_Damage - происходили ли ранее ДТП
+            * Annual_Premium - страховая премия
+            * Policy_Sales_Channel - идентификатор продавца
+            * Vintage - количество дней страхования в компании
+            * Response - ответил ли страхователь на предложение
+            """
+        )
+
+        df = load_large_dataset()
+        st.write(df.head())
+        st.write(df.shape)
+        st.write(
+            """
+                 **Размер датасета:**
+                - 11 504 798 - строк
+                - 11 - столбцов
+            """
+        )
+        st.write(df.info(verbose=True, show_counts=True))
+        st.write(
+            """
+                 **Вывод:**
+                - 3 object
+                - 5 int64
+                - 3 float64
+                - Пропуски отсутствуют
+            """
+        )
+        st.subheader("Разделение на категории")
+        num_columns = ["Age", "Annual_Premium", "Vintage"]  # числовые
+        cat_colums = [
+            "Region_Code",
+            "Vehicle_Age",
+            "Policy_Sales_Channel",
+        ]  # категориальные
+        binary_columns = [
+            "Gender",
+            "Driving_License",
+            "Previously_Insured",
+            "Vehicle_Damage",
+            "Response",
+        ]  # категориальные-бинарные
+
+        # @TODO - make automated count not like tha hardcoded
+        st.write(
+            """
+                - 3 числовых
+                - 8 категориальных
+            """
+        )
 
     with tab3:
         st.write("Coming soon")
 
     with tab4:
         st.write("Coming soon")
+
 
 if __name__ == "__main__":
     process_main_page()
