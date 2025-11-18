@@ -1,1 +1,10 @@
 streamlit
+pandas
+numpy
+setuptools
+ipywidgets
+ydata_profiling
+phik
+seaborn
+matplotlib
+plotly.express
