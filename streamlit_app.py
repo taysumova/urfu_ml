@@ -6,7 +6,7 @@ import seaborn as sns
 # import matplotlib.pyplot as plt
 
 data_file_path = "https://media.githubusercontent.com/media/taysumova/urfu_ml/refs/heads/main/data_sources/train.csv"
-chunksize = 10000
+chunksize = 5000
 
 
 @st.cache_data
@@ -79,9 +79,9 @@ def process_tabs():
             """
         )
 
-        # df = load_large_dataset()
-        # st.write(df.head())
-        # st.write(df.shape)
+        df = load_large_dataset()
+        st.write(df.head(10))
+        st.write(df.shape)
         st.write(
             """
                  **Размер датасета:**
