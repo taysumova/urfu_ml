@@ -6,15 +6,22 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 data_file_path = "https://media.githubusercontent.com/media/taysumova/urfu_ml/refs/heads/main/data_sources/train.csv"
+chunksize = 10000
 
 
-@st.cache_data(ttl=3600)  # Cache for 1 hour
+@st.cache_data
 def load_large_dataset():
-    df = pd.read_csv(
-        data_file_path,
-        index_col="id",
-    )
-    return df
+    chunks = []
+
+    try:
+        with st.spinner("Loading dataset..."):
+            for chunk in pd.read_csv(data_file_path, chunksize=chunksize, index_col="id"):
+                chunks.append(chunk)
+            st.success("Dataset is successfully loaded")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return pd.concat(chunks, ignore_index=True)
 
 
 def process_main_page():
