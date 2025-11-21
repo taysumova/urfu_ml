@@ -79,10 +79,7 @@ def process_tabs():
             """
         )
 
-        df = pd.read_csv(
-            data_file_path,
-            index_col="id",
-        )
+        df = load_large_dataset()
         st.write(df.head())
         st.write(df.shape)
         st.write(
