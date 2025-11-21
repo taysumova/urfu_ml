@@ -6,5 +6,5 @@ ipywidgets
 ydata_profiling
 phik
 seaborn
-matplotlib
+# matplotlib
 # plotly.express
