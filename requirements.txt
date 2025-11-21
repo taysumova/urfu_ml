@@ -5,6 +5,10 @@ setuptools
 ipywidgets
 ydata_profiling
 phik
+psutil
 seaborn
-# matplotlib
+matplotlib
+dask 
+aiohttp
+requests
 # plotly.express
