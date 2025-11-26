@@ -5,8 +5,8 @@ import pandas as pd
 import seaborn as sns
 import dask.dataframe as dd
 
-# data_file_path = "https://media.githubusercontent.com/media/taysumova/urfu_ml/refs/heads/main/data_sources/train.csv"
-data_file_path = "./data_sources/train.csv"
+data_file_path = "https://media.githubusercontent.com/media/taysumova/urfu_ml/refs/heads/main/data_sources/train.csv"
+# data_file_path = "./data_sources/train.csv"
 pd.set_option("display.float_format", lambda x: f"{x:,.2f}")
 
 
