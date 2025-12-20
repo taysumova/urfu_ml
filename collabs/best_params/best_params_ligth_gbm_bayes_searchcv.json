@@ -1,0 +1,14 @@
+{
+    "classifier__colsample_bytree": 0.6621286578442525,
+    "classifier__drop_rate": 0.19214054559158744,
+    "classifier__learning_rate": 0.01,
+    "classifier__max_depth": 8,
+    "classifier__max_drop": 68,
+    "classifier__min_child_samples": 20,
+    "classifier__min_split_gain": 0.03699622992101987,
+    "classifier__n_estimators": 286,
+    "classifier__num_leaves": 50,
+    "classifier__reg_alpha": 0.020668961290103243,
+    "classifier__reg_lambda": 0.030149762474082995,
+    "classifier__subsample": 0.3
+}

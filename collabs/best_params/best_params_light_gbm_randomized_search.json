@@ -1,12 +1,14 @@
 {
-    "classifier__colsample_bytree": 0.7816441089227697,
-    "classifier__learning_rate": 0.00900997135734756,
-    "classifier__max_depth": 12,
-    "classifier__min_child_samples": 62,
-    "classifier__min_split_gain": 0.0230893825622149,
-    "classifier__n_estimators": 191,
-    "classifier__num_leaves": 79,
-    "classifier__reg_alpha": 1.254134495897175e-07,
-    "classifier__reg_lambda": 0.00028614897264046574,
-    "classifier__subsample": 0.5171942605576092
+    "classifier__colsample_bytree": 0.7265477506155757,
+    "classifier__drop_rate": 0.08919657248382905,
+    "classifier__learning_rate": 0.011450964268326641,
+    "classifier__max_depth": 7,
+    "classifier__max_drop": 99,
+    "classifier__min_child_samples": 32,
+    "classifier__min_split_gain": 0.013567451588694796,
+    "classifier__n_estimators": 252,
+    "classifier__num_leaves": 38,
+    "classifier__reg_alpha": 0.011756010900231853,
+    "classifier__reg_lambda": 0.006963114377829284,
+    "classifier__subsample": 0.8628088249474745
 }
